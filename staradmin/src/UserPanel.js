@@ -97,11 +97,6 @@ class UserPanels extends Component {
 
   render() {
 
-    let navbarComponent = localStorage.getItem('token') ? <Navbar user={this.props.user} setting={this.state.setting} setUser={this.setUser} logged_contact={this.props.logged_contact} setLoggedContact={this.setLoggedContact} /> : '';
-    let sidebarComponent = localStorage.getItem('token') ? <Sidebar hasActivitis={this.state.hasActivitis} module_listName={this.state.module_listName} user={this.props.user} setUser={this.setUser} logged_contact={this.props.logged_contact} setLoggedContact={this.setLoggedContact} /> : '';
-    // let SettingsPanelComponent = localStorage.getItem('token') && !this.state.isFullPageLayout ? <SettingsPanel/> : '';
-    let footerComponent = localStorage.getItem('token') ? <Footer /> : '';
-
     let full_name = this.props.user.First_Name;
 
     let class_name = "templete_1" +" container-scroller";
@@ -113,42 +108,6 @@ class UserPanels extends Component {
         
       </div>
     );
-
-
-    if (this.props.templete.id == undefined) {
-      //when he login in first
-      if (localStorage.getItem('token')) {
-        return (
-          <div className="container-scroller">
-            <div className="container-fluid page-body-wrapper ">
-              <div className="main-panel">
-                <div className="content-wrapper">
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-
-        //after logout
-        return (
-          <div className="container-scroller">
-            { navbarComponent}
-            <div className="container-fluid page-body-wrapper ">
-              {sidebarComponent}
-              <div className="main-panel">
-                <div className="content-wrapper">
-                  <AppRoutes user={this.state.user} setUser={this.setUser} logged_contact={this.state.logged_contact} setLoggedContact={this.setLoggedContact} />
-
-                </div>
-                {footerComponent}
-              </div>
-            </div>
-          </div>
-        );
-
-      }
-    }
   }
 
   componentDidUpdate(prevProps) {

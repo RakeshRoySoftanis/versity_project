@@ -38,7 +38,7 @@ class UserPanels extends Component {
     this.props.setUser(null);
     this.props.setLoggedContact(null);
     this.props.dispatcTemplete([]);
-    return <Redirect to="/login"></Redirect>
+    return <Redirect to="/dashboard"></Redirect>
   }
 
   componentDidMount() {
@@ -50,19 +50,15 @@ class UserPanels extends Component {
         this.setUser(response.data.user);
         this.setLoggedContact(response.data.logged_contact);
         this.setTempleteSetting(response.data.template_setting);
-        this.setSetting(response.data.setting);
-        this.setZhSubscriptionOption(response.data.z_option);
-        this.setModule_listName(response.data.module_listName);
-        this.setHasActivitis(response.data.hasActivitis);
       })
       .then(data => this.props.dispatchName(this.state.logged_contact))
       .then(data => this.props.dispatcUser(this.state.user))
       .then(data => this.props.dispatcTemplete(this.state.template_setting))
-      .then(data => this.props.dispatcSetting(this.state.setting))
-      .then(data => this.props.dispatcZh_option(this.state.z_option))
       .catch((err) => {
         if (err.response.data.message == "Unauthenticated.") {
-          localStorage.removeItem("token");
+          // localStorage.removeItem("token");
+          localStorage.setItem('token', "response.token");
+          return <Redirect to="/dashboard"></Redirect>
 
           if (!window.location.href.includes("/password-reset/")) {
             this.props.history.push(PUBLIC_URL + '/login');
@@ -108,51 +104,16 @@ class UserPanels extends Component {
 
     let full_name = this.props.user.First_Name;
 
-    
-    if (this.props.templete.template_api_name === "template_one" || this.props.templete.template_api_name === "template_two") {
-      let class_name = "templete_" + parseInt(this.props.templete.id) + " container-scroller";
-      return (
+    let class_name = "templete_1" +" container-scroller";
+    return (
 
-        <div className={class_name}>
-          <Index />
-          <AppRoutes />
-          
-        </div>
-      );
+      <div className={class_name}>
+        <Index />
+        <AppRoutes />
+        
+      </div>
+    );
 
-    }
-
-    if (this.props.templete.template_api_name == "template_three" || this.props.templete.template_api_name == "template_four") {
-
-      let no = parseInt(this.props.templete.id) - 1
-      let class_name = "templete_" + no + " container-scroller";
-
-      return (
-        <div className={class_name}>
-          <div className="horizontal-menu">
-            {navbarComponent}
-            <nav className="bottom-navbar">
-              <div className="container-fluid">
-                <ul className="nav page-navigation">
-                  {sidebarComponent}
-                </ul>
-              </div>
-            </nav>
-          </div>
-          <div className="container-fluid page-body-wrapper">
-            <div className="main-panel">
-              <div className="content-wrapper">
-                <AppRoutes user={this.state.user} setUser={this.setUser} logged_contact={this.state.logged_contact} setLoggedContact={this.setLoggedContact} />
-
-              </div>
-              {footerComponent}
-            </div>
-          </div>
-        </div>
-
-      );
-
-    }
 
     if (this.props.templete.id == undefined) {
       //when he login in first

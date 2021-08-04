@@ -1,0 +1,21 @@
+                
+                rent_roll                     => UnitId
+		gross_potential_rent_enhanced => UnitId
+		work_order                    => WorkOrderId
+		aged_payables_summary         => InvoicePartyId
+		chart_of_accounts             => GlAccountId
+		lease_expiration_detail       => UnitId
+		property_budget               => GlAccountId
+		leasing_agent_performance     => AssignedUserID
+		tenant_debt_collections_status=> dont have unique ID /  given-> AssignedUser
+		unit_vacancy                  => UnitId
+		upcoming_activities           => UnitId
+		rental_applications           => UnitId
+		deposit_register              => some index has null value in every array 
+		rent_roll_itemized            => UnitId
+		property_group_directory      => PropertyId
+		unit_directory                => UnitId
+		charge_detail                 => no unique value 
+		property_directory            => no unique index
+		surveys_summary               => PropertyId
+		general_ ledger               => no unique index / value

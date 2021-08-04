@@ -1,0 +1,30 @@
+Sync data between Appfolio and our MySQL database on the birgo.thecatalystcloud.com server. Client is currently changing hosting companies, so we need to use our server for now.
+
+This will be a one way sync (every day), so we do not need to send anything back to Appfolio. We already have an integration in place between Appfolio and our database, so we just need to add new tables to that database and populate them with the information below.
+
+The reports in Appfolio which need to get sent to our MySQL database are (please use the file names as the table names, so for example rent_roll.json will be the table Rent Roll in our database):
+
+https://birgo.appfolio.com/api/v1/reports/rent_roll.json
+https://birgo.appfolio.com/api/v1/reports/gross_potential_rent_enhanced.json
+https://birgo.appfolio.com/api/v1/reports/work_order.json
+https://birgo.appfolio.com/api/v1/reports/aged_payables_summary.json
+https://birgo.appfolio.com/api/v1/reports/chart_of_accounts.json https://birgo.appfolio.com/api/v1/reports/lease_expiration_detail.json
+https://birgo.appfolio.com/api/v1/reports/property_budget.json
+https://birgo.appfolio.com/api/v1/reports/leasing_agent_performance.json
+https://birgo.appfolio.com/api/v1/reports/tenant_debt_collections_status.json
+https://birgo.appfolio.com/api/v1/reports/unit_vacancy.json
+https://birgo.appfolio.com/api/v1/reports/upcoming_activities.json
+https://birgo.appfolio.com/api/v1/reports/rental_applications.json
+https://birgo.appfolio.com/api/v1/reports/deposit_register.json
+https://birgo.appfolio.com/api/v1/reports/rent_roll_itemized.json
+https://birgo.appfolio.com/api/v1/reports/property_group_directory.json
+https://birgo.appfolio.com/api/v1/reports/unit_directory.json
+https://birgo.appfolio.com/api/v1/reports/charge_detail.json
+https://birgo.appfolio.com/api/v1/reports/property_directory.json
+https://birgo.appfolio.com/api/v1/reports/surveys_summary.json
+https://birgo.appfolio.com/api/v1/reports/general_ledger.json
+
+These reports from Appfolio need to sync with our database once a day (new records added, edited records updated and existing records skipped), Show Less
+
+https://customers.site5.com
+areichert@gorealtyco.com / 8n0r6NoCgWFr9Gj
